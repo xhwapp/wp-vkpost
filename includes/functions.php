@@ -2,12 +2,30 @@
 // Include required files
 require_once VK_POSTS_PARSER_PLUGIN_DIR . 'includes/api.php';
 require_once VK_POSTS_PARSER_PLUGIN_DIR . 'includes/images.php';
+require_once(ABSPATH . 'wp-includes/pluggable.php');
 
 /**
  * Parse VK posts and create WordPress posts from them.
  */
  
+ 
+ 
+// Инициализируем объект $wp_rewrite в хуке "init"
+add_action('init', function() {
+    global $wp_rewrite;
+    $wp_rewrite = new WP_Rewrite();
+});
+
+// Вызываем функцию vk_post() в хуке "publish_post"
+add_action('publish_post', 'vk_post');
+ 
 function vk_posts_parser_parse_posts() {
+    
+     global $post, $wp_rewrite;
+
+if (isset($wp_rewrite) && $wp_rewrite->using_permalinks()) {
+        // Ваш код для публикации поста в VK
+   
     $params = array(
         'owner_id' => '-' . get_option('vk_posts_parser_group_id'),
         'count' => get_option('vk_posts_parser_posts_count')
@@ -97,7 +115,7 @@ function vk_posts_parser_parse_posts() {
 
             // Set the first image as the post thumbnail
             set_post_thumbnail($post_id, $attachment_ids[0]);
-        }
+        } }
     }
 }
 
