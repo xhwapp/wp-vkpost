@@ -1,0 +1,27 @@
+#vk-posts-parser-settings-form {
+    max-width: 600px;
+}
+
+#vk-posts-parser-settings-form h2 {
+    margin-top: 30px;
+}
+
+#vk-posts-parser-settings-form p {
+    margin-bottom: 20px;
+}
+
+#vk-posts-parser-settings-form input[type="text"],
+#vk-posts-parser-settings-form input[type="number"],
+#vk-posts-parser-settings-form select {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 10px;
+}
+
+#vk-posts-parser-settings-form input[type="submit"] {
+    margin-top: 20px;
+}
+
+#vk-posts-parser-parse-posts-button {
+    margin-top: 20px;
+}
